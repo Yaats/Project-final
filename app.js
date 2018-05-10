@@ -92,6 +92,9 @@ app.use ('/api', authRoutes);
 const router = require ('./routes/movie-detail.js');
 app.use ('/movie-detail', router);
 
+const searchRouter = require ('./routes/search.js');
+app.use ('/search', searchRouter);
+
 module.exports = app;
 
 //  LORS DU DEPLOIEMENT !!!

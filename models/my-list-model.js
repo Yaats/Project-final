@@ -8,9 +8,7 @@ const myListSchema = new Schema (
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
-    movies: {type: [String]},
-    events: {type: [String]},
-    tvShows: {type: [String]},
+    allItems: {type: [String]},
   },
   {
     timestamps: true,
