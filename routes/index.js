@@ -18,7 +18,8 @@ router.get ('/', function (req, res, next) {
   moviesDb
     .get ('/discover/movie/', {
       params: {
-        sort_by: 'vote_count.desc',
+        sort_by: 'vote_average.desc',
+        sort_by: 'popularity.desc',
       },
     })
     .then (result => {
