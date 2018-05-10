@@ -8,9 +8,9 @@ const userSchema = new Schema (
       type: Schema.Types.ObjectId,
       ref: 'MyList',
     },
-    username: {type: String, required: true},
-    email: {type: String, required: true},
-    password: {type: String, required: true},
+    username: {type: String},
+    email: {type: String},
+    password: {type: String},
     interestedIn: {type: [String]},
   },
   {
