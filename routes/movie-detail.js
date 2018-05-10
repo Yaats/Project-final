@@ -15,23 +15,14 @@ const moviesDb = axios.create ({
 
 // GET /:movieId
 router.get ('/:movieId', (req, res, next) => {
-  if (!mongoose.Types.ObjectId.isValid (req.params.movieId)) {
-    next ();
-    return;
-  }
-
   moviesDb
-    .get ('/movie/', {
-      params: {
-        movie_id: req.params.movieId,
-      },
-    })
+    .get (`/movie/${req.params.movieId}`)
     .then (movie => {
       if (!movie) {
         next ();
         return;
       }
-      res.json (movie);
+      res.json (movie.data);
     })
     .catch (err => {
       next (err);
