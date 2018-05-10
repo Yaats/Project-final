@@ -92,6 +92,9 @@ app.use ('/api', authRoutes);
 const router = require ('./routes/movie-detail.js');
 app.use ('/movie-detail', router);
 
+const eventrouter = require ('./routes/event-detail.js');
+app.use ('/event-detail', eventrouter);
+
 module.exports = app;
 
 //  LORS DU DEPLOIEMENT !!!
