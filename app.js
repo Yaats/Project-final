@@ -16,7 +16,7 @@ const flash = require ('connect-flash');
 
 mongoose.Promise = Promise;
 mongoose
-  .connect (process.env.MONGODB_URI, {useMongoClient: true})
+  .connect ('mongodb://localhost/project-final-backend', {useMongoClient: true})
   .then (() => {
     console.log ('Connected to Mongo!');
   })
@@ -94,5 +94,5 @@ module.exports = app;
 //  LORS DU DEPLOIEMENT !!!
 
 // app.use((req, res,next)=> {
-//   res.sendFile(__dirname + '/pulic/index.htm')
+//   res.sendFile(__dirname + '/pulic/index.html')
 // })

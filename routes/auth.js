@@ -40,7 +40,6 @@ authRoutes.post ('/signup', (req, res, next) => {
     });
 
     newUser.save (err => {
-      console.log ('ALLOOO');
       if (err) {
         next (err);
       } else {
