@@ -14,7 +14,7 @@ const moviesDb = axios.create ({
 
 // List of movies in home page sorted by vote_count.desc
 
-router.get ('/', function (req, res, next) {
+router.get ('/movies', function (req, res, next) {
   moviesDb
     .get ('/discover/movie/', {
       params: {
@@ -56,7 +56,7 @@ const eventsDb = axios.create ({
 });
 
 
-router.get ('/', function (req, res, next) {
+router.get ('/events', function (req, res, next) {
   eventsDb
     .get ('/get_events/', {
       params: {
