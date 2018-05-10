@@ -89,6 +89,9 @@ app.use ('/', index);
 const authRoutes = require ('./routes/auth');
 app.use ('/api', authRoutes);
 
+const router = require ('./routes/movie-detail.js');
+app.use ('/movie-detail', router);
+
 module.exports = app;
 
 //  LORS DU DEPLOIEMENT !!!
