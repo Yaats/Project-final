@@ -47,4 +47,43 @@ router.get ('/', function (req, res, next) {
 //     });
 // });
 
+
+const eventsDb = axios.create ({
+  baseURL: 'https://api.paris.fr/api/data/2.2/QueFaire',
+  params: {
+    token: 'e971b12cfc1c94f978f2ff0d6f2d726ad955dbe87161cf4c3e98cb78b470c23f'
+  },
+});
+
+
+router.get ('/', function (req, res, next) {
+  eventsDb
+    .get ('/get_events/', {
+      params: {
+        categories: '',
+        tags: '',
+        start: 0,
+        end: '',
+        offset: '',
+        limit: ''
+      },
+    })
+    .then (result => {
+      console.log ('marche');
+      res.json (result.data);
+      // console.log (result.data);
+    })
+    .catch (err => {
+      console.log ('WTF ERROR 🚧');
+      // console.log (err);
+      next (err);
+    });
+});
+
+
 module.exports = router;
+
+
+// https://api.paris.fr/api/data/2.2/QueFaire/get_events/?token=e971b12cfc1c94f978f2ff0d6f2d726ad955dbe87161cf4c3e98cb78b470c23f&categories=&tags=&start=0&end=&offset=&limit=
+
+// get_events/?token=e971b12cfc1c94f978f2ff0d6f2d726ad955dbe87161cf4c3e98cb78b470c23f
