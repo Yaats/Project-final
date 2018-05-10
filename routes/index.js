@@ -34,19 +34,6 @@ router.get ('/movies', function (req, res, next) {
     });
 });
 
-// details movie page
-
-// router.get ('/:id', function (req, res, next) {
-//   moviesDb
-//     .get (`/movie/${req.params.id}`)
-//     .then (response => {
-//       res.json (response.data);
-//     })
-//     .catch (err => {
-//       next (err);
-//     });
-// });
-
 
 const eventsDb = axios.create ({
   baseURL: 'https://api.paris.fr/api/data/2.2/QueFaire',
@@ -82,8 +69,3 @@ router.get ('/events', function (req, res, next) {
 
 
 module.exports = router;
-
-
-// https://api.paris.fr/api/data/2.2/QueFaire/get_events/?token=e971b12cfc1c94f978f2ff0d6f2d726ad955dbe87161cf4c3e98cb78b470c23f&categories=&tags=&start=0&end=&offset=&limit=
-
-// get_events/?token=e971b12cfc1c94f978f2ff0d6f2d726ad955dbe87161cf4c3e98cb78b470c23f

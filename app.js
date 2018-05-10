@@ -94,6 +94,8 @@ app.use ('/movie-detail', router);
 
 const searchRouter = require ('./routes/search.js');
 app.use ('/search', searchRouter);
+const eventrouter = require ('./routes/event-detail.js');
+app.use ('/event-detail', eventrouter);
 
 module.exports = app;
 
