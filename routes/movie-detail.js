@@ -30,3 +30,4 @@ router.get ('/:movieId', (req, res, next) => {
 });
 
 module.exports = router;
+
