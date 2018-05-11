@@ -30,7 +30,4 @@ router.get ('/:movieId', (req, res, next) => {
     });
 });
 
-router.post ('/:movieId', (req, res, next) => {
-  User.findByIdAndUpdate (userid, {$push: {list: req}});
-});
 module.exports = router;
