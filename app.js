@@ -98,6 +98,8 @@ app.use ('/search', searchRouter);
 const eventrouter = require ('./routes/event-detail.js');
 app.use ('/event-detail', eventrouter);
 
+constaboutRouter = require ('./routes/about-us.js');
+app.use ('/about-us');
 module.exports = app;
 
 //  LORS DU DEPLOIEMENT !!!
