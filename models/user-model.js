@@ -4,10 +4,6 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema (
   {
-    myList: {
-      type: Schema.Types.ObjectId,
-      ref: 'MyList',
-    },
     username: {type: String},
     email: {type: String},
     password: {type: String},

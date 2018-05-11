@@ -2,6 +2,7 @@ const express = require ('express');
 const mongoose = require ('mongoose');
 const router = express.Router ();
 const axios = require ('axios');
+const User = require ('../models/user-model');
 
 //  GET MOVIES
 
@@ -29,5 +30,7 @@ router.get ('/:movieId', (req, res, next) => {
     });
 });
 
+router.post ('/:movieId', (req, res, next) => {
+  User.findByIdAndUpdate (userid, {$push: {list: req}});
+});
 module.exports = router;
-
