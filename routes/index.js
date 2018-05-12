@@ -34,14 +34,34 @@ router.get ('/movies', function (req, res, next) {
     });
 });
 
+// List of series in home page sorted by popularity
+
+router.get ('/series', function (req, res, next) {
+  moviesDb
+    .get ('/tv/popular', {
+      params: {
+        sort_by: 'vote_average.desc',
+        sort_by: 'popularity.desc',
+      },
+    })
+    .then (result => {
+      console.log ('ca marche!!!!!! 🚀');
+      res.json (result.data);
+      // console.log (result.data);
+    })
+    .catch (err => {
+      console.log ('WTF ERROR 🚧');
+      // console.log (err);
+      next (err);
+    });
+});
 
 const eventsDb = axios.create ({
   baseURL: 'https://api.paris.fr/api/data/2.2/QueFaire',
   params: {
-    token: 'e971b12cfc1c94f978f2ff0d6f2d726ad955dbe87161cf4c3e98cb78b470c23f'
+    token: 'e971b12cfc1c94f978f2ff0d6f2d726ad955dbe87161cf4c3e98cb78b470c23f',
   },
 });
-
 
 router.get ('/events', function (req, res, next) {
   eventsDb
@@ -52,7 +72,7 @@ router.get ('/events', function (req, res, next) {
         start: 0,
         end: '',
         offset: '',
-        limit: ''
+        limit: '',
       },
     })
     .then (result => {
@@ -66,6 +86,5 @@ router.get ('/events', function (req, res, next) {
       next (err);
     });
 });
-
 
 module.exports = router;

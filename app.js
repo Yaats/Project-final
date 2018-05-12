@@ -92,6 +92,9 @@ app.use ('/api', authRoutes);
 const router = require ('./routes/movie-detail.js');
 app.use ('/movie-detail', router);
 
+const routerS = require ('./routes/serie-detail.js');
+app.use ('/serie-detail', routerS);
+
 const searchRouter = require ('./routes/search.js');
 app.use ('/search', searchRouter);
 
