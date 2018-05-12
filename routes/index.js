@@ -45,13 +45,9 @@ router.get ('/series', function (req, res, next) {
       },
     })
     .then (result => {
-      console.log ('ca marche!!!!!! 🚀');
       res.json (result.data);
-      // console.log (result.data);
     })
     .catch (err => {
-      console.log ('WTF ERROR 🚧');
-      // console.log (err);
       next (err);
     });
 });
@@ -76,13 +72,10 @@ router.get ('/events', function (req, res, next) {
       },
     })
     .then (result => {
-      console.log ('marche');
       res.json (result.data);
-      // console.log (result.data);
     })
     .catch (err => {
       console.log ('WTF ERROR 🚧');
-      // console.log (err);
       next (err);
     });
 });
