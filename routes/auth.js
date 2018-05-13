@@ -8,19 +8,16 @@ const bcrypt = require ('bcrypt');
 const bcryptSalt = 10;
 
 authRoutes.post ('/signup', (req, res, next) => {
-  console.log (req.body);
   const email = req.body.email;
   const username = req.body.username;
   const password = req.body.password;
   const interestedIn = req.body.interestedIn;
   if (username === '' || password === '') {
     const err = new Error ('Username or password invalid');
-    console.log ('marche');
     err.status = 400;
     next (err);
     return;
   }
-
   User.findOne ({username}, 'username', (err, user) => {
     if (user !== null) {
       const err = new Error ('The username already exists');
@@ -88,6 +85,27 @@ authRoutes.get ('/checklogin', (req, res, next) => {
   }
 
   res.json ({userInfo: req.user});
+});
+
+// EDIT PROFILE
+
+authRoutes.post ('/edit', (req, res, next) => {
+  console.log ('edit backend ready');
+
+  // const interestedIn = req.body.interestedIn;
+  // if (username === '' || password === '') {
+  //   const err = new Error ('Username or password invalid');
+  //   console.log ('marche');
+  //   err.status = 400;
+  //   next (err);
+  //   return;
+  // }
+  // User.findByIdAndUpdate ({username}, 'username', (err, user) => {
+  //   if (user !== null) {
+  //     const err = new Error ('The username already exists');
+  //     err.status = 400;
+  //     next (err);
+  //     return;
 });
 
 module.exports = authRoutes;
