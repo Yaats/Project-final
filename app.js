@@ -113,9 +113,6 @@ app.use ('/favorite-event', favSrouter);
 const favEvrouter = require ('./routes/favorite-event.js');
 app.use ('/favorite-event', favEvrouter);
 
-const editRouter = require ('./routes/edit.js');
-app.use ('/edit', editRouter);
-
 module.exports = app;
 
 //  LORS DU DEPLOIEMENT !!!

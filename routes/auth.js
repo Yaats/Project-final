@@ -90,22 +90,11 @@ authRoutes.get ('/checklogin', (req, res, next) => {
 // EDIT PROFILE
 
 authRoutes.post ('/edit', (req, res, next) => {
-  console.log ('edit backend ready');
-
-  // const interestedIn = req.body.interestedIn;
-  // if (username === '' || password === '') {
-  //   const err = new Error ('Username or password invalid');
-  //   console.log ('marche');
-  //   err.status = 400;
-  //   next (err);
-  //   return;
-  // }
-  // User.findByIdAndUpdate ({username}, 'username', (err, user) => {
-  //   if (user !== null) {
-  //     const err = new Error ('The username already exists');
-  //     err.status = 400;
-  //     next (err);
-  //     return;
+  // console.log ('edit backend ready');
+  User.findByIdAndUpdate (req.user._id, req.body, (err, user) => {
+    if (err) return res.status (500).send (err);
+    return res.send (user);
+  });
 });
 
 module.exports = authRoutes;
