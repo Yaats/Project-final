@@ -89,7 +89,7 @@ authRoutes.get ('/checklogin', (req, res, next) => {
 
 // EDIT PROFILE
 
-authRoutes.post ('/edit', (req, res, next) => {
+authRoutes.put ('/edit', (req, res, next) => {
   // console.log ('edit backend ready');
   User.findByIdAndUpdate (req.user._id, req.body, (err, user) => {
     console.log (req.body);
