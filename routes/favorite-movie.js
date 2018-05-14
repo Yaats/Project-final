@@ -3,7 +3,6 @@ const favMovrouter = express.Router ();
 const Favorite = require ('../models/favorite-model');
 
 favMovrouter.post ('/', (req, res, next) => {
-  console.log ('BBBBBBB', req.user);
   Favorite.create ({
     user: req.user._id,
     category: 'movie',
@@ -14,13 +13,13 @@ favMovrouter.post ('/', (req, res, next) => {
   });
 });
 
-favMovrouter.get ('/billise', function (req, res, next) {
-  console.log ('user showed in favorites ?', req.user);
-  Favorite.find ({user: req.user._id})
-    .sort ({createdAt: -1})
-    .then (listFromDb => {
-      res.json (listFromDb);
-    });
-});
+// favMovrouter.get ('/billise', function (req, res, next) {
+//   console.log ('user showed in favorites ?', req.user);
+//   Favorite.find ({user: req.user._id})
+//     .sort ({createdAt: -1})
+//     .then (listFromDb => {
+//       res.json (listFromDb);
+//     });
+// });
 
 module.exports = favMovrouter;
