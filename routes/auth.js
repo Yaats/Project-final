@@ -92,6 +92,7 @@ authRoutes.get ('/checklogin', (req, res, next) => {
 authRoutes.post ('/edit', (req, res, next) => {
   // console.log ('edit backend ready');
   User.findByIdAndUpdate (req.user._id, req.body, (err, user) => {
+    console.log (req.body);
     if (err) return res.status (500).send (err);
     return res.send (user);
   });
