@@ -7,6 +7,7 @@ favMovrouter.post ('/:category', (req, res, next) => {
     user: req.user._id,
     category: req.params.category,
     title: req.body.title,
+    details: req.body
   }).then (fav => {
     res.json (fav);
   });
