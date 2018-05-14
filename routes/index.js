@@ -28,7 +28,7 @@ router.get ('/movies', function (req, res, next) {
       // console.log (result.data);
     })
     .catch (err => {
-      console.log ('WTF ERROR 🚧');
+      console.log ('this is the error WTF ERROR 🚧');
       // console.log (err);
       next (err);
     });
@@ -75,7 +75,7 @@ router.get ('/events', function (req, res, next) {
       res.json (result.data);
     })
     .catch (err => {
-      console.log ('WTF ERROR 🚧');
+      console.log ('WTF ERROR 🥗');
       next (err);
     });
 });

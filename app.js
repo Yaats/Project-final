@@ -105,13 +105,13 @@ const aboutRouter = require ('./routes/about-us.js');
 app.use ('/about-us', aboutRouter);
 
 const favMovrouter = require ('./routes/favorite-movie.js');
-app.use ('/favorite-event', favMovrouter);
+app.use ('/favorite-event/movie', favMovrouter);
 
 const favSrouter = require ('./routes/favorite-tv-show.js');
-app.use ('/favorite-event', favSrouter);
+app.use ('/favorite-event/tv-show', favSrouter);
 
 const favEvrouter = require ('./routes/favorite-event.js');
-app.use ('/favorite-event', favEvrouter);
+app.use ('/favorite-event/event', favEvrouter);
 
 module.exports = app;
 
