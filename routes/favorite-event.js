@@ -21,6 +21,7 @@ favEvrouter.get ('/billise', function (req, res, next) {
   });
 });
 
+<<<<<<< HEAD
 favEvrouter.post ('/billise/:_id', function (req, res, next) {
   console.log ('arrive-til en backnd ?');
   Favorite.findById ().then (() => {}).catch (err => {
@@ -35,4 +36,6 @@ favEvrouter.post ('/billise/delete/:_id', function (req, res, next) {
   });
 });
 
+=======
+>>>>>>> ab472be48469e67bea3fbaf4774eb721ff7b9323
 module.exports = favEvrouter;
