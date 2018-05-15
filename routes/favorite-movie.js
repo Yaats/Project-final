@@ -13,13 +13,4 @@ favMovrouter.post ('/', (req, res, next) => {
   });
 });
 
-// favMovrouter.get ('/billise', function (req, res, next) {
-//   console.log ('user showed in favorites ?', req.user);
-//   Favorite.find ({user: req.user._id})
-//     .sort ({createdAt: -1})
-//     .then (listFromDb => {
-//       res.json (listFromDb);
-//     });
-// });
-
 module.exports = favMovrouter;

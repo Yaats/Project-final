@@ -21,4 +21,11 @@ favEvrouter.get ('/billise', function (req, res, next) {
   });
 });
 
+favEvrouter.post ('/billise/:_id', function (req, res, next) {
+  console.log ('arrive-til en backnd ?');
+  Favorite.findByIdAndRemove (req.params._id).then (() => {}).catch (err => {
+    next (err);
+  });
+});
+
 module.exports = favEvrouter;
