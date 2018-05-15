@@ -15,19 +15,17 @@ favEvrouter.post ('/', (req, res, next) => {
 });
 
 favEvrouter.get ('/billise', function (req, res, next) {
-  console.log ('user showed in favorites ?', req.user);
   Favorite.find ().sort ({createdAt: -1}).then (listFromDb => {
     res.json (listFromDb);
   });
 });
 
-<<<<<<< HEAD
-favEvrouter.post ('/billise/:_id', function (req, res, next) {
-  console.log ('arrive-til en backnd ?');
-  Favorite.findById ().then (() => {}).catch (err => {
-    next (err);
-  });
-});
+// favEvrouter.post ('/billise/:_id', function (req, res, next) {
+//   console.log ('arrive-til en backnd ?');
+//   Favorite.findById ().then (() => {}).catch (err => {
+//     next (err);
+//   });
+// });
 
 favEvrouter.post ('/billise/delete/:_id', function (req, res, next) {
   console.log ('arrive-til en backnd ?');
@@ -36,6 +34,4 @@ favEvrouter.post ('/billise/delete/:_id', function (req, res, next) {
   });
 });
 
-=======
->>>>>>> ab472be48469e67bea3fbaf4774eb721ff7b9323
 module.exports = favEvrouter;
