@@ -82,9 +82,9 @@ authRoutes.get ('/logout', (req, res) => {
 authRoutes.get ('/checklogin', (req, res, next) => {
   if (req.user) {
     req.user.password = undefined;
+    res.json ({userInfo: req.user});
   }
-
-  res.json ({userInfo: req.user});
+  // next (err);
 });
 
 // EDIT PROFILE
