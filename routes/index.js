@@ -52,6 +52,28 @@ router.get ('/series', function (req, res, next) {
     });
 });
 
+// get movie bby genre 
+
+router.get ('/reco', function (req, res, next) {
+
+  // var aleatoire = Math.random(Math.floor(req.user.genre.length))
+  moviesDb
+  .get (`/genre/35/movies`, {
+    params: {
+      sort_by: 'vote_average.desc',
+      sort_by: 'popularity.desc',
+    },
+  })
+  .then (result => {
+    console.log('trobien');
+      res.json (result.data);
+    })
+    .catch (err => {
+      console.log('trobizaeazen');
+      next (err);
+    });
+});
+
 const eventsDb = axios.create ({
   baseURL: 'https://api.paris.fr/api/data/2.2/QueFaire',
   params: {
