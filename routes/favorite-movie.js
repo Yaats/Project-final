@@ -3,8 +3,6 @@ const favMovrouter = express.Router ();
 const Favorite = require ('../models/favorite-model');
 
 favMovrouter.post ('/', (req, res, next) => {
-  console.log ('req', req.user._id);
-
   Favorite.create ({
     user: req.user._id,
     category: 'movie',
@@ -13,6 +11,22 @@ favMovrouter.post ('/', (req, res, next) => {
   }).then (fav => {
     res.json (fav);
   });
+});
+
+// Delete from favroite list
+favMovrouter.delete ('/billise/:itemId', function (req, res, next) {
+  console.log ('arrive-til en backnd ?');
+  Favorite.findByIdAndRemove (req.params.itemId)
+    .then (result => {
+      if (!result) {
+        next ();
+        return;
+      }
+      res.json (result);
+    })
+    .catch (err => {
+      next (err);
+    });
 });
 
 module.exports = favMovrouter;

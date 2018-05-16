@@ -8,6 +8,8 @@ const userSchema = new Schema (
     email: {type: String},
     password: {type: String},
     interestedIn: {type: [Number]},
+    interestedInSerie: {type: [Number]},
+    interestedInEvent: {type: [Number]},
   },
   {
     timestamps: true,

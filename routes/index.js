@@ -23,13 +23,11 @@ router.get ('/movies', function (req, res, next) {
       },
     })
     .then (result => {
-      console.log ('ca marche!!!!!! 🚀');
+      // console.log ('ca marche!!!!!! 🚀');
       res.json (result.data);
-      // console.log (result.data);
     })
     .catch (err => {
-      console.log ('this is the error WTF ERROR 🚧');
-      // console.log (err);
+      console.log ('this is the error WTF ERROR 🚧', err);
       next (err);
     });
 });
@@ -52,24 +50,23 @@ router.get ('/series', function (req, res, next) {
     });
 });
 
-// get movie bby genre 
+// get movie bby genre
 
-router.get ('/reco', function (req, res, next) {
-
-  // var aleatoire = Math.random(Math.floor(req.user.genre.length))
+router.get ('/reco/:movieGenreId', function (req, res, next) {
   moviesDb
-  .get (`/genre/35/movies`, {
-    params: {
-      sort_by: 'vote_average.desc',
-      sort_by: 'popularity.desc',
-    },
-  })
-  .then (result => {
-    console.log('trobien');
+    .get (`/discover/movie}`, {
+      params: {
+        sort_by: 'vote_average.desc',
+        sort_by: 'popularity.desc',
+        with_genres: req.query.movieGenreId,
+      },
+    })
+    .then (result => {
+      console.log ('trobien');
       res.json (result.data);
     })
     .catch (err => {
-      console.log('trobizaeazen');
+      console.log ('trobizaeazen');
       next (err);
     });
 });

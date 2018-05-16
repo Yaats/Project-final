@@ -13,4 +13,20 @@ favSrouter.post ('/', (req, res, next) => {
   });
 });
 
+// Delete from favroite list
+favSrouter.delete ('/billise/:itemId', function (req, res, next) {
+  console.log ('arrive-til en backnd ?');
+  Favorite.findByIdAndRemove (req.params.itemId)
+    .then (result => {
+      if (!result) {
+        next ();
+        return;
+      }
+      res.json (result);
+    })
+    .catch (err => {
+      next (err);
+    });
+});
+
 module.exports = favSrouter;

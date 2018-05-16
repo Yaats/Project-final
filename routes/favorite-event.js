@@ -14,24 +14,28 @@ favEvrouter.post ('/', (req, res, next) => {
   });
 });
 
+// get list of favorites
+
 favEvrouter.get ('/billise', function (req, res, next) {
   Favorite.find ().sort ({createdAt: -1}).then (listFromDb => {
     res.json (listFromDb);
   });
 });
 
-// favEvrouter.post ('/billise/:_id', function (req, res, next) {
-//   console.log ('arrive-til en backnd ?');
-//   Favorite.findById ().then (() => {}).catch (err => {
-//     next (err);
-//   });
-// });
-
-favEvrouter.post ('/billise/delete/:_id', function (req, res, next) {
+// Delete from favroite list
+favEvrouter.delete ('/billise/:itemId', function (req, res, next) {
   console.log ('arrive-til en backnd ?');
-  Favorite.findByIdAndRemove (req.params._id).then (() => {}).catch (err => {
-    next (err);
-  });
+  Favorite.findByIdAndRemove (req.params.itemId)
+    .then (result => {
+      if (!result) {
+        next ();
+        return;
+      }
+      res.json (result);
+    })
+    .catch (err => {
+      next (err);
+    });
 });
 
 module.exports = favEvrouter;

@@ -12,6 +12,8 @@ authRoutes.post ('/signup', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   const interestedIn = req.body.interestedIn;
+  const interestedInSerie = req.body.interestedInSerie;
+  const interestedInEvent = req.body.interestedInEvent;
   if (username === '' || password === '') {
     const err = new Error ('Username or password invalid');
     err.status = 400;
@@ -34,6 +36,8 @@ authRoutes.post ('/signup', (req, res, next) => {
       email,
       password: hashPass,
       interestedIn,
+      interestedInSerie,
+      interestedInEvent,
     });
 
     newUser.save (err => {
