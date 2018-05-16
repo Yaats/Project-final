@@ -8,14 +8,14 @@ const axios = require ('axios');
 const eventsDb = axios.create ({
   baseURL: 'https://api.paris.fr/api/data/2.0/QueFaire',
   params: {
-    token: 'e971b12cfc1c94f978f2ff0d6f2d726ad955dbe87161cf4c3e98cb78b470c23f'
+    token: process.env.API_EVENTPARIS_TOKEN,
   },
 });
 
 // GET /:eventId
 eventrouter.get ('/:eventId', (req, res, next) => {
   eventsDb
-    .get(`/get_activity/`, { params: { id: req.params.eventId } })
+    .get (`/get_activity/`, {params: {id: req.params.eventId}})
     .then (event => {
       if (!event) {
         next ();

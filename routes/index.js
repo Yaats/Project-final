@@ -7,7 +7,7 @@ const axios = require ('axios');
 const moviesDb = axios.create ({
   baseURL: 'https://api.themoviedb.org/3',
   params: {
-    api_key: '3d60d443da666373611cdcdb9db60537',
+    api_key: process.env.API_MOVIES_KEY,
     include_adult: false,
   },
 });
@@ -74,7 +74,7 @@ router.get ('/reco/:movieGenreId', function (req, res, next) {
 const eventsDb = axios.create ({
   baseURL: 'https://api.paris.fr/api/data/2.2/QueFaire',
   params: {
-    token: 'e971b12cfc1c94f978f2ff0d6f2d726ad955dbe87161cf4c3e98cb78b470c23f',
+    token: process.env.API_EVENTPARIS_TOKEN,
   },
 });
 

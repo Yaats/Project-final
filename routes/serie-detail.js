@@ -7,7 +7,7 @@ const User = require ('../models/user-model');
 const moviesDb = axios.create ({
   baseURL: 'https://api.themoviedb.org/3',
   params: {
-    api_key: '3d60d443da666373611cdcdb9db60537',
+    api_key: process.env.API_MOVIES_KEY,
     include_adult: false,
   },
 });
