@@ -9,7 +9,10 @@ const favoriteSchema = new Schema (
       ref: 'User',
     },
     title: {type: String},
-    category: {type: String, enum: ['movie', 'event', 'tv-show', 'music']},
+    category: {
+      type: String,
+      enum: ['movie', 'event', 'tv-show', 'music', 'book'],
+    },
     details: {type: Schema.Types.Mixed},
   },
   {

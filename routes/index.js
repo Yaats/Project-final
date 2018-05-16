@@ -1,6 +1,7 @@
 const express = require ('express');
 const router = express.Router ();
 const axios = require ('axios');
+var books = require ('google-books-search');
 
 //  GET MOVIES
 
@@ -156,9 +157,39 @@ router.get ('/reco/events', function (req, res, next) {
       res.json (result.data);
     })
     .catch (err => {
-      console.log ('trobizaeazen');
+      console.log ('trobizaeazen les events');
       next (err);
     });
 });
+
+//  get books on home page
+
+// router.get ('/books', (req, res, next) => {
+//   var options = {
+//     key: process.env.API_BOOK_KEY,
+//     offset: 0,
+//     type: 'books',
+//     order: 'relevance',
+//     lang: 'en',
+//   };
+
+//   books
+//     .search ('maxime chattam', options, function (error, results) {
+//       if (!error) {
+//         // res.json (results);
+//         console.log (results);
+//       } else {
+//         console.log (error);
+//       }
+//     })
+//     .then (result => {
+//       console.log ('trobienlesbookkssssssssssssssssss');
+//       res.json (result);
+//     })
+//     .catch (err => {
+//       console.log ('trobizaeazenlesboooks');
+//       next (err);
+//     });
+// });
 
 module.exports = router;
