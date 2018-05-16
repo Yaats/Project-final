@@ -50,7 +50,7 @@ router.get ('/series', function (req, res, next) {
     });
 });
 
-// get movie bby genre
+// get movie by genre
 
 router.get ('/reco/movies', function (req, res, next) {
   if (!req.user) {
@@ -65,6 +65,33 @@ router.get ('/reco/movies', function (req, res, next) {
         sort_by: 'vote_average.desc',
         sort_by: 'popularity.desc',
         with_genres: req.user.interestedIn.join ('|'),
+      },
+    })
+    .then (result => {
+      console.log ('trobien');
+      res.json (result.data);
+    })
+    .catch (err => {
+      console.log ('trobizaeazen');
+      next (err);
+    });
+});
+
+// get serie by genre
+
+router.get ('/reco/series', function (req, res, next) {
+  if (!req.user) {
+    const err = new Error ('Need to be logged in for recos');
+    next (err);
+    return;
+  }
+
+  moviesDb
+    .get (`/discover/tv`, {
+      params: {
+        sort_by: 'vote_average.desc',
+        sort_by: 'popularity.desc',
+        with_genres: req.user.interestedInSerie.join ('|'),
       },
     })
     .then (result => {
@@ -101,6 +128,35 @@ router.get ('/events', function (req, res, next) {
     })
     .catch (err => {
       console.log ('WTF ERROR 🥗');
+      next (err);
+    });
+});
+
+// get events by genres
+router.get ('/reco/events', function (req, res, next) {
+  if (!req.user) {
+    const err = new Error ('Need to be logged in for recos');
+    next (err);
+    return;
+  }
+
+  eventsDb
+    .get (`/get_events/`, {
+      params: {
+        categories: req.user.interestedInEvent.join (','),
+        tags: '',
+        start: 0,
+        end: '',
+        offset: '',
+        limit: '',
+      },
+    })
+    .then (result => {
+      console.log ('trobien');
+      res.json (result.data);
+    })
+    .catch (err => {
+      console.log ('trobizaeazen');
       next (err);
     });
 });
