@@ -105,6 +105,9 @@ app.use ('/search', searchRouter);
 const eventrouter = require ('./routes/event-detail.js');
 app.use ('/event-detail', eventrouter);
 
+const bookrouter = require ('./routes/book-detail.js');
+app.use ('/book-detail', bookrouter);
+
 const aboutRouter = require ('./routes/about-us.js');
 app.use ('/about-us', aboutRouter);
 

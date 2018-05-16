@@ -164,32 +164,24 @@ router.get ('/reco/events', function (req, res, next) {
 
 //  get books on home page
 
-// router.get ('/books', (req, res, next) => {
-//   var options = {
-//     key: process.env.API_BOOK_KEY,
-//     offset: 0,
-//     type: 'books',
-//     order: 'relevance',
-//     lang: 'en',
-//   };
+router.get ('/books', (req, res, next) => {
+  var options = {
+    key: process.env.API_BOOK_KEY,
+    field: 'subject',
+    offset: 0,
+    type: 'books',
+    order: 'newest',
+    lang: 'en',
+    limit: '20',
+  };
 
-//   books
-//     .search ('maxime chattam', options, function (error, results) {
-//       if (!error) {
-//         // res.json (results);
-//         console.log (results);
-//       } else {
-//         console.log (error);
-//       }
-//     })
-//     .then (result => {
-//       console.log ('trobienlesbookkssssssssssssssssss');
-//       res.json (result);
-//     })
-//     .catch (err => {
-//       console.log ('trobizaeazenlesboooks');
-//       next (err);
-//     });
-// });
+  books.search ('thriller', options, function (error, results) {
+    if (!error) {
+      res.json (results);
+    } else {
+      console.log (error);
+    }
+  });
+});
 
 module.exports = router;
