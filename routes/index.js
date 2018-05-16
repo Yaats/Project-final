@@ -141,7 +141,7 @@ router.get ('/reco/events', function (req, res, next) {
   }
 
   eventsDb
-    .get (`/get_events`, {
+    .get (`/get_events/`, {
       params: {
         categories: req.user.interestedInEvent.join (','),
         tags: '',
@@ -152,7 +152,7 @@ router.get ('/reco/events', function (req, res, next) {
       },
     })
     .then (result => {
-      console.log ('trobien', req.user.interestedInEvent);
+      console.log ('trobien');
       res.json (result.data);
     })
     .catch (err => {
@@ -162,3 +162,14 @@ router.get ('/reco/events', function (req, res, next) {
 });
 
 module.exports = router;
+
+// .then (result => {
+//   var reco = []
+//   result.data.forEach(element => {
+//     if (element.evenements.category.lv10 == "Festivités"){
+//       reco.push(element)
+//     }
+//   });
+//   console.log ('trobien');
+//   res.json (reco);
+// })
