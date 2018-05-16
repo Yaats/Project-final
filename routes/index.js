@@ -52,13 +52,19 @@ router.get ('/series', function (req, res, next) {
 
 // get movie bby genre
 
-router.get ('/reco/:movieGenreId', function (req, res, next) {
+router.get ('/reco/movies', function (req, res, next) {
+  if (!req.user) {
+    const err = new Error ('Need to be logged in for recos');
+    next (err);
+    return;
+  }
+
   moviesDb
-    .get (`/discover/movie}`, {
+    .get (`/discover/movie`, {
       params: {
         sort_by: 'vote_average.desc',
         sort_by: 'popularity.desc',
-        with_genres: req.query.movieGenreId,
+        with_genres: req.user.interestedIn.join ('|'),
       },
     })
     .then (result => {
