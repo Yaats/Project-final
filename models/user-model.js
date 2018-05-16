@@ -10,6 +10,7 @@ const userSchema = new Schema (
     interestedIn: {type: [Number]},
     interestedInSerie: {type: [Number]},
     interestedInEvent: {type: [Number]},
+    interestedInBook: {type: [String]},
   },
   {
     timestamps: true,
