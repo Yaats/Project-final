@@ -24,7 +24,6 @@ bookrouter.get ('/:bookTitle', (req, res, next) => {
   books.search (id, options, function (error, results) {
     if (!error) {
       res.json (results);
-      // console.log (results[0].industryIdentifiers[1].identifier);
     } else {
       console.log (error);
     }

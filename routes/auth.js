@@ -14,6 +14,8 @@ authRoutes.post ('/signup', (req, res, next) => {
   const interestedIn = req.body.interestedIn;
   const interestedInSerie = req.body.interestedInSerie;
   const interestedInEvent = req.body.interestedInEvent;
+  const interestedInBook = req.body.interestedInBook;
+
   if (username === '' || password === '') {
     const err = new Error ('Username or password invalid');
     err.status = 400;
@@ -38,6 +40,7 @@ authRoutes.post ('/signup', (req, res, next) => {
       interestedIn,
       interestedInSerie,
       interestedInEvent,
+      interestedInBook,
     });
 
     newUser.save (err => {

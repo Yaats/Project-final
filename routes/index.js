@@ -24,11 +24,10 @@ router.get ('/movies', function (req, res, next) {
       },
     })
     .then (result => {
-      // console.log ('ca marche!!!!!! 🚀');
       res.json (result.data);
     })
     .catch (err => {
-      console.log ('this is the error WTF ERROR 🚧', err);
+      console.log (err);
       next (err);
     });
 });
@@ -51,7 +50,7 @@ router.get ('/series', function (req, res, next) {
     });
 });
 
-// get movie by genre
+// get reco movie by genre
 
 router.get ('/reco/movies', function (req, res, next) {
   if (!req.user) {
@@ -78,7 +77,7 @@ router.get ('/reco/movies', function (req, res, next) {
     });
 });
 
-// get serie by genre
+// get reco serie by genre
 
 router.get ('/reco/series', function (req, res, next) {
   if (!req.user) {
@@ -104,6 +103,8 @@ router.get ('/reco/series', function (req, res, next) {
       next (err);
     });
 });
+
+// get list of events
 
 const eventsDb = axios.create ({
   baseURL: 'https://api.paris.fr/api/data/2.2/QueFaire',
@@ -133,7 +134,8 @@ router.get ('/events', function (req, res, next) {
     });
 });
 
-// get events by genres
+// get reco events by genres
+
 router.get ('/reco/events', function (req, res, next) {
   if (!req.user) {
     const err = new Error ('Need to be logged in for recos');
@@ -144,7 +146,7 @@ router.get ('/reco/events', function (req, res, next) {
   eventsDb
     .get (`/get_events`, {
       params: {
-        categories: req.user.interestedInEvent.join (','),
+        categories: req.user.interestedInEvent.join ('|'),
         tags: '',
         start: 0,
         end: '',
@@ -153,7 +155,6 @@ router.get ('/reco/events', function (req, res, next) {
       },
     })
     .then (result => {
-      console.log ('trobien', req.user.interestedInEvent);
       res.json (result.data);
     })
     .catch (err => {
@@ -162,7 +163,7 @@ router.get ('/reco/events', function (req, res, next) {
     });
 });
 
-//  get books on home page
+//  get lists of books
 
 router.get ('/books', (req, res, next) => {
   var options = {
@@ -175,7 +176,7 @@ router.get ('/books', (req, res, next) => {
     limit: '20',
   };
 
-  books.search ('thriller', options, function (error, results) {
+  books.search ('fiction', options, function (error, results) {
     if (!error) {
       res.json (results);
     } else {
@@ -187,25 +188,32 @@ router.get ('/books', (req, res, next) => {
 //  get reco books
 
 router.get ('/reco/books', (req, res, next) => {
-  if (req.user.interestedInBook == drama) {
-    var options = {
-      key: process.env.API_BOOK_KEY,
-      field: 'subject',
-      offset: 0,
-      type: 'books',
-      order: 'newest',
-      lang: 'en',
-      limit: '20',
-    };
-
-    books.search ('drama', options, function (error, results) {
-      if (!error) {
-        res.json (results);
-      } else {
-        console.log (error);
-      }
-    });
+  if (!req.user) {
+    const err = new Error ('Need to be logged in for recos');
+    next (err);
+    return;
   }
+  // console.log ('voici le req', req.user.interestedInBook);
+
+  var options = {
+    key: process.env.API_BOOK_KEY,
+    field: 'subject',
+    offset: 0,
+    type: 'books',
+    order: 'newest',
+    lang: 'en',
+    limit: '20',
+  };
+
+  var id = req.user.interestedInBook.join ('|');
+
+  books.search (id, options, function (error, results) {
+    if (!error) {
+      res.json (results);
+    } else {
+      console.log (error);
+    }
+  });
 });
 
 module.exports = router;
