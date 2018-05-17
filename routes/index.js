@@ -144,7 +144,7 @@ router.get ('/reco/events', function (req, res, next) {
   }
 
   eventsDb
-    .get (`/get_events`, {
+    .get (`/get_events/`, {
       params: {
         categories: req.user.interestedInEvent.join ('|'),
         tags: '',
@@ -155,6 +155,10 @@ router.get ('/reco/events', function (req, res, next) {
       },
     })
     .then (result => {
+<<<<<<< HEAD
+=======
+      console.log ('trobien');
+>>>>>>> 48c7ad3b4f58b3d20f31f30d98cb8d20be40e61d
       res.json (result.data);
     })
     .catch (err => {
@@ -217,3 +221,14 @@ router.get ('/reco/books', (req, res, next) => {
 });
 
 module.exports = router;
+
+// .then (result => {
+//   var reco = []
+//   result.data.forEach(element => {
+//     if (element.evenements.category.lv10 == "Festivités"){
+//       reco.push(element)
+//     }
+//   });
+//   console.log ('trobien');
+//   res.json (reco);
+// })
