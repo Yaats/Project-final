@@ -155,10 +155,6 @@ router.get ('/reco/events', function (req, res, next) {
       },
     })
     .then (result => {
-<<<<<<< HEAD
-=======
-      console.log ('trobien');
->>>>>>> 48c7ad3b4f58b3d20f31f30d98cb8d20be40e61d
       res.json (result.data);
     })
     .catch (err => {
