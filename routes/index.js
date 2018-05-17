@@ -184,4 +184,28 @@ router.get ('/books', (req, res, next) => {
   });
 });
 
+//  get reco books
+
+router.get ('/reco/books', (req, res, next) => {
+  if (req.user.interestedInBook == drama) {
+    var options = {
+      key: process.env.API_BOOK_KEY,
+      field: 'subject',
+      offset: 0,
+      type: 'books',
+      order: 'newest',
+      lang: 'en',
+      limit: '20',
+    };
+
+    books.search ('drama', options, function (error, results) {
+      if (!error) {
+        res.json (results);
+      } else {
+        console.log (error);
+      }
+    });
+  }
+});
+
 module.exports = router;
