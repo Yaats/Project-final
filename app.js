@@ -120,6 +120,9 @@ app.use ('/favorite-event/tv-show', favSrouter);
 const favEvrouter = require ('./routes/favorite-event.js');
 app.use ('/favorite-event/event', favEvrouter);
 
+const favBrouter = require ('./routes/favorite-book.js');
+app.use ('/favorite-event/book', favBrouter);
+
 module.exports = app;
 
 //  LORS DU DEPLOIEMENT !!!
