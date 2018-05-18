@@ -120,15 +120,17 @@ router.get ('/events', function (req, res, next) {
         categories: '',
         tags: '',
         start: 0,
-        end: '',
+        end: 0,
         offset: '',
         limit: '',
       },
     })
     .then (result => {
+      console.log("ALL --->", result.request._header)
       res.json (result.data);
     })
     .catch (err => {
+      console.log("ALL ERROR--->", err.response.request._header)
       console.log ('WTF ERROR 🥗');
       next (err);
     });
@@ -155,9 +157,11 @@ router.get ('/reco/events', function (req, res, next) {
       },
     })
     .then (result => {
+      console.log("RECO --->", result.request._header)
       res.json (result.data);
     })
     .catch (err => {
+      console.log("RECO ERROR--->", err.response.request._header)
       console.log ('trobizaeazen les events');
       next (err);
     });
