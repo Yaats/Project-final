@@ -146,10 +146,10 @@ router.get ('/reco/events', function (req, res, next) {
   eventsDb
     .get (`/get_events/`, {
       params: {
-        categories: req.user.interestedInEvent.join ('|'),
+        categories: req.user.interestedInEvent.join (','),
         tags: '',
         start: 0,
-        end: '',
+        end: 0,
         offset: '',
         limit: '',
       },
