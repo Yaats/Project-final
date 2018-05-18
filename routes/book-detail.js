@@ -26,6 +26,7 @@ bookrouter.get ('/:bookTitle', (req, res, next) => {
       res.json (results);
     } else {
       console.log (error);
+      next (error);
     }
   });
 });

@@ -128,5 +128,5 @@ module.exports = app;
 //  LORS DU DEPLOIEMENT !!!
 
 app.use ((req, res, next) => {
-  res.sendFile (__dirname + '/pulic/index.html');
+  res.sendFile (__dirname + '/public/index.html');
 });

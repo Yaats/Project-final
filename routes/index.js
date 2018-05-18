@@ -181,6 +181,7 @@ router.get ('/books', (req, res, next) => {
       res.json (results);
     } else {
       console.log (error);
+      next (error);
     }
   });
 });
@@ -212,6 +213,7 @@ router.get ('/reco/books', (req, res, next) => {
       res.json (results);
     } else {
       console.log (error);
+      next (error);
     }
   });
 });
